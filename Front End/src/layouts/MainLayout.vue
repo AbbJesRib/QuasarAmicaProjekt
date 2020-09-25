@@ -15,9 +15,9 @@
     <q-footer elevated style="background-color: pink">
     <q-toolbar>
     <q-toolbar-title>
-    Like for cock
+    Like for Matte
     </q-toolbar-title>
-    Ignore for ball
+    Ignore for Fysik
     </q-toolbar>
     </q-footer>
   </q-layout>

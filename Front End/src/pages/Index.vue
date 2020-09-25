@@ -7,21 +7,29 @@
     </q-img>
     <div>
       <ul>
-        <li v-for="(x) in stats" :key="x">
+        <li v-for="(day) in stats" :key="index">
         <div class='q-pa-md'>
-        <q-btn @click="addClick(x.id)" class="glossy q-pa-md" rounded color="pink-2"> {{ x.name }} - {{ x.clicks }} clicks </q-btn>
+        <q-btn @click="addClick(day.name)" class="glossy q-pa-md" rounded color="pink-2"> {{ day.name }}</q-btn>
 
         </div>
         </li>
       </ul>
     </div>
+    <ul>
+      <li v-for="(day, index) in meny" :key="index">
+      {{ day.name }}, {{ day.clicks }}
+      </li>
+    </ul>
   </q-page>
 </template>
 
 <script>
+import { db } from '../boot/firebase'
+
 export default {
   name: "PageIndex",
   data: () => ({
+    meny: [],
     stats: [
       {
         id: 0,
@@ -46,6 +54,9 @@ export default {
     ],
     hasClicked: false
   }),
+  firestore: {
+    meny: db.collection('meny-test').doc('day1').collection('dishes')
+  },
   methods: {
     addClick (id) {
       if (this.hasClicked === false) {
